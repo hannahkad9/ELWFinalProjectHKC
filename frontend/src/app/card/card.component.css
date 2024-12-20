@@ -1,0 +1,73 @@
+.card {
+  position: relative;
+  width: 130px;
+  height: 150px; 
+  border: 2px solid #808080;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; 
+  transition: all 0.3s ease-in-out;
+  background-color: #ccc;
+  padding-top: 10px; 
+}
+
+.card img {
+  width: 100px; 
+  height: 70px; 
+  object-fit: cover; 
+}
+
+.country-name {
+  margin-top: 6px; 
+  font-size: 14px;
+  text-align: center;
+  color: black;
+}
+
+.abbreviation {
+  margin-top: 8px; 
+  font-size: 16px;
+  font-weight: bold;
+  color: black;
+  visibility: hidden; 
+}
+
+.card.matched {
+  background-color: rgba(0, 255, 0, 0.3); 
+}
+
+.card.matched .abbreviation {
+  visibility: visible; 
+}
+
+
+@media (max-width: 768px) {
+  .card {
+    max-width: 200px;
+  }
+
+  .country-name {
+    font-size: 0.9rem;
+  }
+
+  .abbreviation {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    max-width: 150px; 
+  }
+
+  .country-name {
+    font-size: 0.8rem;
+  }
+
+  .abbreviation {
+    font-size: 0.7rem;
+  }
+}

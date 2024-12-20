@@ -1,0 +1,24 @@
+<div
+  class="card"
+  [class.flipped]="flag.flipped"
+  [class.matched]="flag.matched"
+  [style.background]="flag.matched ? 'blur(5px)' : ''"
+>
+  <!-- Display flag image -->
+  <img
+    *ngIf="flag.flipped || flag.matched"
+    [src]="flag.flag"
+    [alt]="flag.country"
+  />
+  
+  <!-- Display country name under the flag when flipped -->
+  <div *ngIf="flag.flipped || flag.matched" class="country-name">
+    <span>{{ flag.name }}</span>
+  </div>
+
+  <div *ngIf="flag.matched" class="abbreviation">
+    <span>{{ flag.country }}</span>
+  </div>
+
+</div>
+

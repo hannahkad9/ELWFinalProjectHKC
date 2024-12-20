@@ -1,0 +1,42 @@
+<div class="register-container">
+  <div class="register-box">
+    <!-- Header -->
+    <div class="header">
+      <span>WELCOME</span>
+    </div>
+
+    <!-- Success Message -->
+    <div *ngIf="successMessage" class="success-message">
+      <span>{{ successMessage }}</span>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="error-message">
+      <span>{{ errorMessage }}</span>
+    </div>
+
+    <!-- Registration Form -->
+    <form (ngSubmit)="register()">
+      <div class="input-group">
+        <span class="icon">👤</span>
+        <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
+      </div>
+      <div class="input-group">
+        <span class="icon">🔒</span>
+        <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required />
+      </div>
+
+      <!-- Sign Up Button -->
+      <button type="submit" class="signup-button">SIGN UP</button>
+    </form>
+
+    <!-- Redirect to Login -->
+<!-- Redirect to Login -->
+<div class="login-redirect">
+  <span>Already have an account? 
+    <a [routerLink]="['/login']">Login</a>
+  </span>
+</div>
+
+</div>
+

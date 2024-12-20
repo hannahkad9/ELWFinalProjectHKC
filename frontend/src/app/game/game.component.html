@@ -1,0 +1,147 @@
+<!-- Game Container -->
+<div class="game-container">
+  
+  <!-- Game Configuration Section: Select Number of Pairs -->
+  <div *ngIf="showPairSelection" class="game-config">
+    <label for="numCards">Number of pairs:</label>
+    <input
+      type="number"
+      id="numCards"
+      [(ngModel)]="pairs"
+      min="2"
+      max="250"
+      [disabled]="lockBoard"
+    />
+    <button (click)="selectPairs(pairs)" [disabled]="lockBoard">Start Game</button>
+  </div>
+
+  <!-- Timer Section -->
+<div class="timer-container">
+  <!-- Timer Icon -->
+  <div class="timer-icon">
+    <img src="https://static.vecteezy.com/system/resources/previews/039/660/958/original/stopwatch-timer-icon-3d-rendering-illustration-png.png" alt="Timer Icon" class="icon" />
+  </div>
+
+  <!-- Timer Bar -->
+  <div class="progress-bar-container">
+    <div
+      class="progress-bar-fill"
+      [style.width.%]="(timer / (pairs * 9)) * 100"
+    ></div>
+    <span class="progress-text">{{ timer }}s</span>
+  </div>
+</div>
+
+  <!-- Level Progress Section -->
+  <div class="level-progress-container">
+    <span class="level-label left">Level {{ level }}</span>
+
+    <div class="progress-bar-container">
+      <div
+        class="progress-bar-fill"
+        [style.width.%]="calculateLevelProgress()"
+      >
+        <span class="progress-text">
+          {{ calculateLevelProgress() | number: '1.0-0' }}%
+        </span>
+      </div>
+    </div>
+
+    <span class="level-label right">Level {{ level + 1 }}</span>
+  </div>
+
+
+
+
+  <!-- Player Stats Row -->
+<!-- Player Stats Section -->
+<div class="player-stats">
+  <div class="stat-item">
+    <div class="icon-container">
+      <img src="https://cdn-icons-png.flaticon.com/512/8450/8450130.png" alt="Moves Icon" class="stat-icon">
+    </div>
+    <div class="stat-value">
+      <span>{{ moves }}</span>
+    </div>
+  </div>
+
+  <div class="stat-item">
+    <div class="icon-container">
+      <img src="https://cdn-icons-png.flaticon.com/512/7269/7269138.png" alt="Misses Icon" class="stat-icon">
+    </div>
+    <div class="stat-value">
+      <span>{{ misses }}</span>
+    </div>
+  </div>
+
+  <div class="stat-item">
+    <div class="icon-container">
+      <img src="https://cdn3.iconfinder.com/data/icons/redmoon-google/512/google_games-1024.png" alt="Rounds Icon" class="stat-icon">
+    </div>
+    <div class="stat-value">
+      <span>{{ roundsPlayed }}</span>
+    </div>
+  </div>
+</div>
+
+
+ <!-- Accuracy Section -->
+<div class="accuracy">
+  <span class="accuracy-label">Accuracy:</span>
+  <div class="stars">
+    <span class="star squared" [class.filled]="accuracy >= 33"></span>
+    <span class="star squared" [class.filled]="accuracy >= 66"></span>
+    <span class="star squared" [class.filled]="accuracy === 100"></span>
+  </div>
+</div>
+
+
+  <!-- Cards Grid -->
+  <div class="cards">
+    <app-card
+      *ngFor="let card of cards"
+      [flag]="card"
+      (click)="flipCard(card)"
+    ></app-card>
+  </div>
+
+  <!-- Winning Popup -->
+  <div class="popup" [class.show]="showPopup" >
+    <div class="popup-content">
+      <h2 class="popup-title">CONGRATS!</h2>
+      <p class="level-display">Level {{ level }}</p>
+
+      <!-- Accuracy Stars -->
+      <div class="accuracy">
+        <span class="accuracy-label">Accuracy:</span>
+        <div class="stars">
+          <span class="star" [class.filled]="accuracy >= 33"></span>
+          <span class="star" [class.filled]="accuracy >= 66"></span>
+          <span class="star" [class.filled]="accuracy === 100"></span>
+        </div>
+      </div>
+
+      <!-- Score -->
+      <p class="score-display">✔ Score: {{ score | number: '1.0-2'  }}</p>
+
+      <div class="popup-buttons">
+        <button class="restart-btn" (click)="restartGame()">🔄</button>
+        <button class="logout-btn" (click)="logout()">🏠</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Timeout Popup -->
+  <div class="popup" [class.show]="timer === 0">
+    <div class="popup-content">
+      <h2 class="popup-title">TIME'S UP!</h2>
+      <p class="score-display">✔ Final Score: {{ score | number: '1.0-2' }}</p>
+
+      <div class="popup-buttons">
+        <button class="restart-btn" (click)="restartGame()">🔄</button>
+        <button class="logout-btn" (click)="logout()">🏠</button>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,31 @@
+<div class="login-container">
+  <div class="login-box">
+    <!-- Header -->
+    <div class="header">
+      <span>WELCOME</span>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="errorMessage" class="error-message">
+      <span>{{ errorMessage }}</span>
+    </div>
+
+    <!-- Form -->
+    <form>
+      <div class="input-group">
+        <span class="icon">👤</span>
+        <input type="text" placeholder="Username" [(ngModel)]="email" name="username" required />
+      </div>
+      <div class="input-group">
+        <span class="icon">🔒</span>
+        <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required />
+      </div>
+
+      <!-- Buttons -->
+      <div class="button-group">
+        <button type="button" class="signup-button" (click)="openRegisterWindow()">SIGN UP</button>
+        <button type="submit" class="login-button" (click)="login()">LOGIN</button>
+      </div>
+    </form>
+  </div>
+</div>

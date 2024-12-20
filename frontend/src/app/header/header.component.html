@@ -1,0 +1,23 @@
+<header class="header-content">
+  <h1>
+    Flagory
+    <img src="https://4.bp.blogspot.com/-wfvG0o9TyNU/W-MMqKEYb2I/AAAAAAAAuCY/J_wkatKjz3s6_ncpl3shRK5mC07CzgiawCLcBGAs/s1600/all_country_flags_in_one_flag.gif" alt="Flagory GIF" class="header-gif" />
+  </h1>
+
+  <!-- User Actions -->
+  <div class="user-actions">
+    <!-- User Icon -->
+    <div class="user-icon" (click)="toggleDropdown()">
+      <img src="https://www.pinclipart.com/picdir/big/91-919500_individuals-user-vector-icon-png-clipart.png" alt="User Icon" />
+      <span *ngIf="isLoggedIn">{{ userName }}</span>
+    </div>
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown-menu" *ngIf="showDropdown">
+      <button *ngIf="!isLoggedIn" (click)="login()">Login</button>
+      <button *ngIf="!isLoggedIn" (click)="register()">Register</button>
+      <button *ngIf="!isLoggedIn" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</header>
+

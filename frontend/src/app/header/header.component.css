@@ -1,0 +1,214 @@
+/* Header Container */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffcc00; 
+  color: red; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header Title */
+.header-content h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin: 0;
+  letter-spacing: 2px;
+  color: red; 
+  display: flex;
+  align-items: center; 
+  gap: 10px; 
+  font-family: Comic Sans MS; 
+}
+
+/* Header GIF */
+.header-gif {
+  width: 40px; 
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* User Actions Container */
+.user-actions {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+/* User Icon */
+.user-icon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 20px;
+  transition: transform 0.2s ease;
+}
+
+.user-icon img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+/* Hover effect on user icon */
+.user-icon:hover {
+  transform: scale(1.1); 
+}
+
+/* Username Text */
+.user-icon span {
+  font-size: 18px;
+  font-weight: bold;
+}
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 150px;
+}
+
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f0f0f0;
+}
+
+/* Header Container */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 5%; 
+  background-color: #ffcc00;
+  color: red;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  gap: 15px; 
+}
+
+/* Header Title */
+.header-content h1 {
+  font-size: clamp(1.5rem, 4vw, 2.5rem); 
+  font-weight: bold;
+  margin: 0;
+  letter-spacing: 2px;
+  color: red;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  text-align: center; 
+}
+
+/* Header GIF */
+.header-gif {
+  width: 30px; 
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* User Actions Container */
+.user-actions {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 10px; 
+  flex-wrap: wrap; 
+}
+
+/* User Icon */
+.user-icon {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-left: 20px;
+  transition: transform 0.2s ease;
+}
+
+.user-icon img {
+  width: clamp(30px, 5vw, 40px); 
+  height: clamp(30px, 5vw, 40px);
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+/* Hover effect on user icon */
+.user-icon:hover {
+  transform: scale(1.1); 
+}
+
+/* Username Text */
+.user-icon span {
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  font-weight: bold;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  width: 150px;
+}
+
+.dropdown-menu button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.dropdown-menu button:hover {
+  background-color: #f0f0f0;
+}
+@media (max-width: 768px) {
+  .dropdown-menu button {
+    font-size: 16px; 
+    padding: 12px; 
+  }
+}
+
+/* Responsive Design for Extra Small Screens */
+@media (max-width: 480px) {
+  .dropdown-menu {
+    width: 100%; 
+    left: 0; 
+    border-radius: 0; 
+  }
+
+  .dropdown-menu button {
+    font-size: 10px; 
+    padding: 14px;
+    text-overflow: ellipsis; 
+  }
+}

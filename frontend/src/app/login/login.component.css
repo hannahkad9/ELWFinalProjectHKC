@@ -1,0 +1,136 @@
+/* Overall background styling */
+body, html {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(to bottom, #1e3d59, #0f2a43);
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-box {
+  background: #fff;
+  border: 5px solid #ffa500; 
+  border-radius: 10px;
+  width: 350px;
+  padding: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+}
+
+/* Header Styling */
+.header {
+  position: relative;
+  background: #e94e32;
+  color: #fff;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 5px 5px 0 0;
+}
+
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #ffcccb;
+  border: none;
+  color: #333;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.close-button:hover {
+  background: #ffaaaa;
+}
+
+/* Error Message */
+.error-message {
+  background-color: #ffcccb;
+  color: #d8000c;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #d8000c;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Input Groups */
+.input-group {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  border: 2px solid #ddd;
+  border-radius: 25px;
+  padding: 5px 10px;
+  background-color: #f4f4f4;
+}
+
+.input-group .icon {
+  font-size: 18px;
+  color: #555;
+  margin-right: 8px;
+}
+
+.input-group input {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: 100%;
+  font-size: 14px;
+}
+
+/* Remember Me */
+.remember-me {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  font-size: 14px;
+}
+
+.remember-me input {
+  margin-right: 5px;
+}
+
+/* Buttons */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.signup-button, .login-button {
+  width: 48%;
+  padding: 10px;
+  border: none;
+  border-radius: 25px;
+  font-size: 14px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.signup-button {
+  background-color: #00bfff; 
+}
+
+.signup-button:hover {
+  background-color: #009acd;
+}
+
+.login-button {
+  background-color: #32cd32; 
+}
+
+.login-button:hover {
+  background-color: #28a428;
+}
