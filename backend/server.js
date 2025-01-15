@@ -5,6 +5,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import { flagsRouter } from './flags/flags.routes.js';
 import router from './users/auth.routes.js';
+import { statisticsRouter } from './estadistica/estadistica.routes.js';
 const app = express();
 const port = 3000;
 
@@ -21,6 +22,7 @@ mongoose
 // Routes
 app.use('/api/flags', flagsRouter);
 app.use('/api/auth', router);  // Use the auth routes
+app.use('/api/statistics', statisticsRouter);
 
 // Start the server
 app.listen(port, () => {

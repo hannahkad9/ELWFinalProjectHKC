@@ -47,6 +47,13 @@ export class HeaderComponent {
     this.router.navigate(['/register']);
   }
   
+  statistics() {
+    this.router.navigate(['/statistics']);
+  }
+  recentEvents() {
+    this.router.navigate(['/statistics/recent']);
+  }
+  
 }
 
 

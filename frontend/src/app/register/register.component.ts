@@ -35,38 +35,33 @@ export class RegisterComponent implements OnInit {
   register() {
     if (this.email.trim() === '' || this.password.trim() === '') {
       this.errorMessage = 'Email and password cannot be empty';
-      // Log a click event for the "Register" button with error
       this.logEvent('Register Button', 'click');
       return;
     }
 
     this.authService.register(this.email, this.password).subscribe({
       next: (response) => {
-        // Display success message
         this.successMessage = response.message;
-        this.errorMessage = ''; // Clear any error message
+        this.errorMessage = '';
 
-        // Log a successful click event for the "Register" button
+        // Log success event for button click
         this.logEvent('Register Button - Success', 'click');
 
-        // Redirect to login after a delay
         setTimeout(() => {
           this.router.navigate(['/login']);
         }, 2000);
       },
       error: (error) => {
-        // Display error message from the backend
         this.errorMessage = error.error.message || 'Unexpected error occurred';
-        this.successMessage = ''; // Clear success message
+        this.successMessage = '';
 
-        // Log a failed click event for the "Register" button
+        // Log failure event for button click
         this.logEvent('Register Button - Error', 'click');
       },
     });
   }
 
   backToLogin() {
-    // Log a click event for the "Back to Login" button
     this.logEvent('Back to Login Button', 'click');
     this.router.navigate(['/login']);
   }
@@ -75,7 +70,7 @@ export class RegisterComponent implements OnInit {
   private logEvent(location: string, eventType: string): void {
     const sessionId = this.sessionService.getSessionId();
     this.http
-      .post('http://localhost:3000/api/auth/statistics', {
+      .post('http://localhost:3000/api/statistics', {
         sessionId,
         llocEvent: location,
         tipusEvent: eventType,

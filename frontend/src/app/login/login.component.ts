@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthService } from '../services/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-login',
@@ -16,12 +18,19 @@ export class LoginComponent {
   password: string = ''; // User's password input
   errorMessage: string = ''; // Error message if login fails
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    private http: HttpClient,
+    private sessionService: SessionService
+  ) {}
 
   // Login method - authenticates user using the AuthService
   login() {
-    // Clear any previous error messages
-    this.errorMessage = '';
+    this.errorMessage = ''; // Clear any previous error messages
+
+    // Log click event for the "Login" button
+    this.logEvent('Login Button', 'click');
 
     // Call login method from AuthService with provided email and password
     this.authService.login(this.email, this.password).subscribe({
@@ -31,31 +40,31 @@ export class LoginComponent {
           const user = response.user;
           const token = response.token;
 
-          // Ensure the user has the expected properties before accessing them
-          const score = user?.score ?? 0; // Default to 0 if score is undefined
-          const roundsPlayed = user?.roundsPlayed ?? 0; // Default to 0 if roundsPlayed is undefined
-          const level = user?.level ?? 1; // Default to 1 if level is undefined
-          console.log(score, user.roundsPlayed, user.level);
           // Store user data, token, and other necessary values in localStorage
-          localStorage.setItem('score', score.toString());
-          localStorage.setItem('roundsPlayed', roundsPlayed.toString());
-          localStorage.setItem('level', level.toString());
+          localStorage.setItem('score', (user?.score ?? 0).toString());
+          localStorage.setItem('roundsPlayed', (user?.roundsPlayed ?? 0).toString());
+          localStorage.setItem('level', (user?.level ?? 1).toString());
           localStorage.setItem('isLoggedIn', 'true');
-          localStorage.setItem('user', JSON.stringify(user)); // Store full user data
-          localStorage.setItem('token', token); // Store JWT token
+          localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem('token', token);
 
           // Update AuthService with logged-in user
           this.authService.setUser(user);
 
+          // Log success event
+          this.logEvent('Login Button - Success', 'click');
+
           // Redirect to the game page after successful login
           this.router.navigate(['/game']);
         } else {
-          // Handle case where response is missing required data
+          // Log failure event
+          this.logEvent('Login Button - Failure', 'click');
           this.errorMessage = 'Unexpected error, please try again later.';
         }
       },
       error: (err) => {
-        // Handle login failure (invalid credentials)
+        // Log failed login attempt
+        this.logEvent('Login Button - Error', 'click');
         this.errorMessage = 'Invalid login credentials!'; // Display error message
       }
     });
@@ -63,6 +72,23 @@ export class LoginComponent {
 
   // Open Register Window - navigate to the register page
   openRegisterWindow() {
+    this.logEvent('Open Register Window', 'click');
     this.router.navigate(['/register']);
+  }
+
+  // Method to log events
+  private logEvent(location: string, eventType: string): void {
+    const sessionId = this.sessionService.getSessionId();
+    this.http
+      .post('http://localhost:3000/api/statistics', {
+        sessionId,
+        llocEvent: location,
+        tipusEvent: eventType,
+        createdAt: new Date(),
+      })
+      .subscribe({
+        next: () => console.log(`Event logged: ${location} (${eventType})`),
+        error: (err) => console.error('Error logging event:', err),
+      });
   }
 }
