@@ -1,153 +1,157 @@
 /* General Body and Container Styling */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f7fa;
-    color: #333;
-    margin: 0;
-    padding: 0;
-  }
-  
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+/* Filter Section */
+.filters {
+  padding: 30px;
+  margin: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+h2 {
+  text-align: center;
+  color: #444;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+label {
+  font-size: 1.1em;
+  color: #444;
+  margin-bottom: 5px;
+}
+
+input[type="date"],
+input[type="text"],
+select {
+  padding: 12px;
+  font-size: 1.1em;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  width: 220px;
+}
+
+button[type="submit"] {
+  background-color: #6c7ae0;
+  color: white;
+  padding: 12px 25px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: flex-start;
+}
+
+button[type="submit"]:hover {
+  background-color: #4c5cb5;
+}
+
+/* Statistics Section */
+.statistics-table {
+  margin-top: 30px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  width: 100%;
+  margin: 20px auto;
+}
+
+.statistics-table h2 {
+  text-align: center;
+  color: #444;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+/* Statistics Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #6c7ae0;
+  color: white;
+  font-size: 1.2em;
+}
+
+table td {
+  font-size: 1em;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+}
+
+/* No Statistics Available Message */
+.statistics-table p {
+  font-size: 1.2em;
+  color: #888;
+  text-align: center;
+  padding: 20px 0;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
   .filters {
-    background-color: #fff;
-    padding: 30px;
-    margin: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    max-width: 900px; /* Adjusted max-width */
-    width: 100%;
-    height: auto; /* Auto height */
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  h2 {
-    text-align: center;
-    color: #444;
-    font-size: 1.8em;
-    margin-bottom: 20px;
-  }
-  
-  /* Form Styling */
-  form {
-    display: flex;
-    flex-wrap: wrap; /* Allows wrapping of fields into new rows */
-    gap: 20px; /* Spacing between fields */
-    justify-content: space-between; /* Ensures equal spacing between fields */
-  }
-  
-  label {
-    font-size: 1.1em;
-    color: #444;
-    margin-bottom: 5px;
-  }
-  
-  input[type="date"],
-  input[type="text"] {
-    padding: 12px;
-    font-size: 1.1em;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    width: 220px; /* Fixed width for inputs to keep layout consistent */
-  }
-  
-  select {
-    padding: 12px;
-    font-size: 1.1em;
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    width: 220px; /* Fixed width for select */
-  }
-  
-  button[type="submit"] {
-    background-color: #6c7ae0;
-    color: white;
-    padding: 12px 25px;
-    font-size: 1.2em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    align-self: flex-start; /* Aligns the button to the left */
-  }
-  
-  button[type="submit"]:hover {
-    background-color: #4c5cb5;
-  }
-  
-  /* Statistics Table */
-  .statistics-table {
-    margin-top: 30px;
+    margin: 10px;
     padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    max-width: 900px;
-    margin: 20px auto;
   }
-  
-  table {
-    width: 100%;
-    border-collapse: collapse;
+
+  form {
+    flex-direction: column;
   }
-  
+
+  .filters h2 {
+    font-size: 1.5em;
+  }
+
+  .statistics-table {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  .statistics-table h2 {
+    font-size: 1.5em;
+  }
+
+  button[type="submit"] {
+    font-size: 1em;
+    padding: 10px 20px;
+  }
+
   table th,
   table td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+    padding: 8px;
   }
-  
-  table th {
-    background-color: #6c7ae0;
-    color: white;
-    font-size: 1.2em;
-  }
-  
-  table td {
-    font-size: 1em;
-  }
-  
-  table tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  /* No Statistics Available Message */
-  .statistics-table p {
-    font-size: 1.2em;
-    color: #888;
-    text-align: center;
-    padding: 20px 0;
-  }
-  
-  /* Responsive Design */
-  @media (max-width: 600px) {
-    .filters {
-      margin: 10px;
-      padding: 20px;
-    }
-  
-    form {
-      flex-direction: column; /* Stacks inputs vertically on small screens */
-    }
-  
-    .filters h2 {
-      font-size: 1.5em;
-    }
-  
-    .statistics-table {
-      margin: 10px;
-      padding: 15px;
-    }
-  
-    button[type="submit"] {
-      font-size: 1em;
-      padding: 10px 20px;
-    }
-  
-    table th,
-    table td {
-      padding: 8px;
-    }
-  }
-  
+}

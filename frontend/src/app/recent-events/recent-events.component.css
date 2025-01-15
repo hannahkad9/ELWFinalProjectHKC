@@ -5,6 +5,11 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Centers the body content horizontally */
+    justify-content: center;  /* Centers the content vertically */
+    min-height: 100vh;  /* Ensures full viewport height */
   }
   
   /* Container for the whole section */
@@ -17,12 +22,18 @@ body {
   }
   
   /* Filter Section */
-  div {
+  .filters {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
     margin-bottom: 30px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    width: 100%;
   }
   
   /* Label Styles */
@@ -53,7 +64,20 @@ body {
     outline: none;
   }
   
-  /* Button Style */
+  /* Filter Buttons Container Box */
+  .filter-buttons-box {
+    background-color: #f7f9fc;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    max-width: 600px;
+    width: 100%;
+    margin: 20px auto;
+  }
+  
   button {
     background-color: #6c7ae0;
     color: white;
@@ -103,7 +127,7 @@ body {
   
   /* Responsive Design */
   @media (max-width: 600px) {
-    div {
+    .filters {
       flex-direction: column;
       align-items: center;
     }
@@ -117,6 +141,13 @@ body {
     select {
       width: 100%;
       max-width: 300px;
+    }
+  
+    /* Adjust the filter buttons box for small screens */
+    .filter-buttons-box {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
     }
   }
   

@@ -74,7 +74,7 @@ export class HeaderComponent {
   private logEvent(location: string, eventType: string): void {
     const sessionId = this.sessionService.getSessionId(); // Assuming session service is managing sessions
     this.http
-      .post('http://localhost:3000/api/auth/statistics', {
+      .post('http://localhost:3000/api/stats/statistics', {
         sessionId,
         llocEvent: location,
         tipusEvent: eventType,

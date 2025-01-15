@@ -23,7 +23,7 @@ export class StatisticsComponent implements OnInit {
   }
 
   loadStats(): void {
-    this.http.get<any[]>('http://localhost:3000/api/auth/statistics', { params: this.filters })
+    this.http.get<any[]>('http://localhost:3000/api/stats/statistics', { params: this.filters })
       .subscribe(data => this.stats = data);
   }
 }

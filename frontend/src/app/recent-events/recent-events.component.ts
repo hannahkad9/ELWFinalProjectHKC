@@ -23,7 +23,7 @@ export class RecentEventsComponent implements OnInit {
 
   loadEvents(): void {
     this.http
-      .get<any[]>('http://localhost:3000/api/auth/statistics/recent', {
+      .get<any[]>('http://localhost:3000/api/stats/statistics/recent', {
         params: this.filters,
       })
       .subscribe((data) => (this.events = data));

@@ -66,31 +66,4 @@ export class AuthService {
     localStorage.removeItem('user');
   }
 
-  // Get all statistics with optional filters
-  getStatistics(filters: any): Observable<any> {
-    let params = new URLSearchParams();
-
-    if (filters) {
-      if (filters.dataInici) params.set('dataInici', filters.dataInici);
-      if (filters.dataFinal) params.set('dataFinal', filters.dataFinal);
-      if (filters.llocEvent) params.set('llocEvent', filters.llocEvent);
-      if (filters.tipusEvent) params.set('tipusEvent', filters.tipusEvent);
-    }
-
-    return this.http.get<any>(`${this.apiUrl}/statistics?${params.toString()}`);
-  }
-
-  // Get the most recent 10 events with optional filters
-  getRecentEvents(filters: any): Observable<any> {
-    let params = new URLSearchParams();
-
-    if (filters) {
-      if (filters.dataInici) params.set('dataInici', filters.dataInici);
-      if (filters.dataFinal) params.set('dataFinal', filters.dataFinal);
-      if (filters.llocEvent) params.set('llocEvent', filters.llocEvent);
-      if (filters.tipusEvent) params.set('tipusEvent', filters.tipusEvent);
-    }
-
-    return this.http.get<any>(`${this.apiUrl}/statistics/recent?${params.toString()}`);
-  }
 }
