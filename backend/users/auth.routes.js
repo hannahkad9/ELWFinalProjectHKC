@@ -3,6 +3,7 @@ import express from 'express';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from './users.model.js';
+import Statistic from './estadistica.model.js';
 const router = express.Router();
 
 // Register Route
@@ -113,6 +114,27 @@ router.post('/refresh-token', async (req, res) => {
     res.status(401).json({ message: 'Invalid or expired refresh token' });
   }
 });
+
+
+
+
+// Create a new statistic
+router.post('/statistics', async (req, res) => {
+  try {
+    const { sessionId, userId, llocEvent, tipusEvent } = req.body;
+    if (!sessionId || !llocEvent || !tipusEvent) {
+      return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    const statistic = new Statistic({ sessionId, userId, llocEvent, tipusEvent });
+    await statistic.save();
+    res.status(201).json({ message: 'Statistic logged successfully', statistic });
+  } catch (error) {
+    res.status(500).json({ error: 'Failed to log statistic' });
+  }
+});
+
+
 
 export default router;
 
