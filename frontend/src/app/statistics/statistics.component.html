@@ -1,0 +1,21 @@
+<h2>Statistics</h2>
+<div>
+  <label for="startDate">Start Date:</label>
+  <input id="startDate" type="date" [(ngModel)]="filters.dataInici" />
+  <label for="endDate">End Date:</label>
+  <input id="endDate" type="date" [(ngModel)]="filters.dataFinal" />
+  <label for="location">Location:</label>
+  <input id="location" type="text" [(ngModel)]="filters.llocEvent" />
+  <label for="eventType">Event Type:</label>
+  <select id="eventType" [(ngModel)]="filters.tipusEvent">
+    <option value="">All</option>
+    <option value="visita">Visita</option>
+    <option value="click">Click</option>
+  </select>
+  <button (click)="loadStats()">Filter</button>
+</div>
+<ul>
+  <li *ngFor="let stat of stats">
+    {{ stat._id }}: {{ stat.count }}
+  </li>
+</ul>
