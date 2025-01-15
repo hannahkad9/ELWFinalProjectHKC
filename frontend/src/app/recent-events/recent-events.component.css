@@ -1,0 +1,122 @@
+/* General Body Style */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f7fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Container for the whole section */
+  h2 {
+    text-align: center;
+    font-size: 2em;
+    color: #444;
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
+  
+  /* Filter Section */
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  /* Label Styles */
+  label {
+    font-size: 1.1em;
+    color: #333;
+    margin-right: 10px;
+    align-self: center;
+    margin-bottom: 5px;
+  }
+  
+  /* Input and Select Styles */
+  input[type="date"],
+  input[type="text"],
+  select {
+    padding: 10px;
+    font-size: 1em;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    width: 200px;
+    margin-bottom: 20px;
+  }
+  
+  input[type="date"]:focus,
+  input[type="text"]:focus,
+  select:focus {
+    border-color: #6c7ae0;
+    outline: none;
+  }
+  
+  /* Button Style */
+  button {
+    background-color: #6c7ae0;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #4c5cb5;
+  }
+  
+  /* List of Events */
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  li {
+    background-color: white;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 1.1em;
+    color: #444;
+    transition: transform 0.3s ease;
+  }
+  
+  li:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Date and Event Info */
+  li span {
+    display: block;
+    font-size: 0.9em;
+    color: #888;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    div {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    label {
+      font-size: 1em;
+    }
+  
+    input[type="date"],
+    input[type="text"],
+    select {
+      width: 100%;
+      max-width: 300px;
+    }
+  }
+  

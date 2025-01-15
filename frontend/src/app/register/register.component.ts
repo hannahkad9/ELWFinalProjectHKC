@@ -28,14 +28,14 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     // Log a visit to the "Register" page
-    this.logEvent('Register Page', 'visita');
+    this.logEvent('Register', 'visita');
   }
 
   // Method to handle user registration
   register() {
     if (this.email.trim() === '' || this.password.trim() === '') {
       this.errorMessage = 'Email and password cannot be empty';
-      this.logEvent('Register Button', 'click');
+      this.logEvent('Register', 'click');
       return;
     }
 
@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
         this.errorMessage = '';
 
         // Log success event for button click
-        this.logEvent('Register Button - Success', 'click');
+        this.logEvent('Register', 'click');
 
         setTimeout(() => {
           this.router.navigate(['/login']);
@@ -56,13 +56,13 @@ export class RegisterComponent implements OnInit {
         this.successMessage = '';
 
         // Log failure event for button click
-        this.logEvent('Register Button - Error', 'click');
+        this.logEvent('Register', 'click');
       },
     });
   }
 
   backToLogin() {
-    this.logEvent('Back to Login Button', 'click');
+    this.logEvent('Register', 'click');
     this.router.navigate(['/login']);
   }
 

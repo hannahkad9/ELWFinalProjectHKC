@@ -30,7 +30,7 @@ export class LoginComponent {
     this.errorMessage = ''; // Clear any previous error messages
 
     // Log click event for the "Login" button
-    this.logEvent('Login Button', 'click');
+    this.logEvent('Login', 'click');
 
     // Call login method from AuthService with provided email and password
     this.authService.login(this.email, this.password).subscribe({
@@ -52,19 +52,19 @@ export class LoginComponent {
           this.authService.setUser(user);
 
           // Log success event
-          this.logEvent('Login Button - Success', 'click');
+          this.logEvent('Login', 'click');
 
           // Redirect to the game page after successful login
           this.router.navigate(['/game']);
         } else {
           // Log failure event
-          this.logEvent('Login Button - Failure', 'click');
+          this.logEvent('Login', 'click');
           this.errorMessage = 'Unexpected error, please try again later.';
         }
       },
       error: (err) => {
         // Log failed login attempt
-        this.logEvent('Login Button - Error', 'click');
+        this.logEvent('Login', 'click');
         this.errorMessage = 'Invalid login credentials!'; // Display error message
       }
     });
@@ -72,7 +72,7 @@ export class LoginComponent {
 
   // Open Register Window - navigate to the register page
   openRegisterWindow() {
-    this.logEvent('Open Register Window', 'click');
+    this.logEvent('Login', 'click');
     this.router.navigate(['/register']);
   }
 

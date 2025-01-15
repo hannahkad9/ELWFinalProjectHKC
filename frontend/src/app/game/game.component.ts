@@ -49,7 +49,7 @@ export class GameComponent implements OnInit {
     if (!isLoggedIn) {
       this.router.navigate(['/login']);
     } else {
-      this.logEvent('Game Page', 'visita'); // Log the game page visit
+      this.logEvent('Game', 'visita'); // Log the game page visit
       this.pairs = this.calculatePairsForLevel();
       this.startGame();
     }
@@ -133,7 +133,7 @@ export class GameComponent implements OnInit {
   flipCard(card: any) {
     if (this.lockBoard || card.flipped) return;
 
-    this.logEvent('Flip Card', 'click'); // Log card flip event
+    this.logEvent('Game', 'click'); // Log card flip event
 
     card.flipped = true;
 
@@ -157,7 +157,7 @@ export class GameComponent implements OnInit {
       this.calculateAccuracy();
       if (this.pairsFound === this.pairs) {
         clearInterval(this.interval);
-        this.logEvent('Game Completed', 'click'); // Log game completion
+        this.logEvent('Game', 'click'); // Log game completion
         this.showPopup = true;
         this.roundsPlayed++;
         localStorage.setItem('roundsPlayed', this.roundsPlayed.toString());
@@ -199,13 +199,13 @@ export class GameComponent implements OnInit {
   restartGame(customPairs: number | null = null) {
     this.customGameMode = !!customPairs;
     this.showPopup = false;
-    this.logEvent('Restart Game', 'click'); // Log restart game event
+    this.logEvent('Game', 'click'); // Log restart game event
     this.startGame(customPairs);
   }
 
   logout() {
     localStorage.removeItem('isLoggedIn');
-    this.logEvent('Logout', 'click'); // Log logout event
+    this.logEvent('Game', 'click'); // Log logout event
     this.router.navigate(['/login']);
   }
 
