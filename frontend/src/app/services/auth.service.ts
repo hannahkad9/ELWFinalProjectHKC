@@ -1,4 +1,3 @@
-// auth.service.ts
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -23,17 +22,14 @@ export class AuthService {
   register(email: string, password: string) {
     return this.http.post<{ message: string }>(`${this.apiUrl}/register`, { email, password });
   }
-  
 
   // Login an existing user
-login(email: string, password: string) {
-  return this.http.post<{ token: string; user: { email: string; roundsPlayed: number; level: number } }>(
-    `${this.apiUrl}/login`,
-    { email, password }
-  );
-}
-
-  
+  login(email: string, password: string) {
+    return this.http.post<{ token: string; user: { email: string; roundsPlayed: number; level: number } }>(
+      `${this.apiUrl}/login`,
+      { email, password }
+    );
+  }
 
   // Update user data (e.g., rounds played and level)
   updateProgress(token: string, roundsPlayedIncrement: number, levelIncrement: number): Observable<any> {
@@ -43,7 +39,6 @@ login(email: string, password: string) {
       levelIncrement
     });
   }
-  
 
   // Set the user data after login or registration
   setUser(user: User) {
@@ -69,5 +64,33 @@ login(email: string, password: string) {
   // Remove user info
   removeUserInfo(): void {
     localStorage.removeItem('user');
+  }
+
+  // Get all statistics with optional filters
+  getStatistics(filters: any): Observable<any> {
+    let params = new URLSearchParams();
+
+    if (filters) {
+      if (filters.dataInici) params.set('dataInici', filters.dataInici);
+      if (filters.dataFinal) params.set('dataFinal', filters.dataFinal);
+      if (filters.llocEvent) params.set('llocEvent', filters.llocEvent);
+      if (filters.tipusEvent) params.set('tipusEvent', filters.tipusEvent);
+    }
+
+    return this.http.get<any>(`${this.apiUrl}/statistics?${params.toString()}`);
+  }
+
+  // Get the most recent 10 events with optional filters
+  getRecentEvents(filters: any): Observable<any> {
+    let params = new URLSearchParams();
+
+    if (filters) {
+      if (filters.dataInici) params.set('dataInici', filters.dataInici);
+      if (filters.dataFinal) params.set('dataFinal', filters.dataFinal);
+      if (filters.llocEvent) params.set('llocEvent', filters.llocEvent);
+      if (filters.tipusEvent) params.set('tipusEvent', filters.tipusEvent);
+    }
+
+    return this.http.get<any>(`${this.apiUrl}/statistics/recent?${params.toString()}`);
   }
 }

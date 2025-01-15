@@ -14,6 +14,8 @@
 
     <!-- Dropdown Menu -->
     <div class="dropdown-menu" *ngIf="showDropdown">
+      <button *ngIf="!isLoggedIn" (click)="statistics()">Stats</button>
+      <button *ngIf="!isLoggedIn" (click)="recentEvents()">Recent Events</button>
       <button *ngIf="!isLoggedIn" (click)="login()">Login</button>
       <button *ngIf="!isLoggedIn" (click)="register()">Register</button>
       <button *ngIf="!isLoggedIn" (click)="logout()">Logout</button>

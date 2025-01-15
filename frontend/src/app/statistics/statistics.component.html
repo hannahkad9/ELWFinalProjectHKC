@@ -1,21 +1,51 @@
-<h2>Statistics</h2>
-<div>
-  <label for="startDate">Start Date:</label>
-  <input id="startDate" type="date" [(ngModel)]="filters.dataInici" />
-  <label for="endDate">End Date:</label>
-  <input id="endDate" type="date" [(ngModel)]="filters.dataFinal" />
-  <label for="location">Location:</label>
-  <input id="location" type="text" [(ngModel)]="filters.llocEvent" />
-  <label for="eventType">Event Type:</label>
-  <select id="eventType" [(ngModel)]="filters.tipusEvent">
-    <option value="">All</option>
-    <option value="visita">Visita</option>
-    <option value="click">Click</option>
-  </select>
-  <button (click)="loadStats()">Filter</button>
-</div>
-<ul>
-  <li *ngFor="let stat of stats">
-    {{ stat._id }}: {{ stat.count }}
-  </li>
-</ul>
+<!-- statistics.component.html -->
+
+<div class="filters">
+    <h2>Statistics Filters</h2>
+    <form (ngSubmit)="loadStats()">
+      <div>
+        <label for="dataInici">Start Date:</label>
+        <input type="date" id="dataInici" [(ngModel)]="filters.dataInici" name="dataInici" />
+      </div>
+  
+      <div>
+        <label for="dataFinal">End Date:</label>
+        <input type="date" id="dataFinal" [(ngModel)]="filters.dataFinal" name="dataFinal" />
+      </div>
+  
+      <div>
+        <label for="llocEvent">Event Location:</label>
+        <input type="text" id="llocEvent" [(ngModel)]="filters.llocEvent" name="llocEvent" />
+      </div>
+  
+      <div>
+        <label for="tipusEvent">Event Type:</label>
+        <input type="text" id="tipusEvent" [(ngModel)]="filters.tipusEvent" name="tipusEvent" />
+      </div>
+  
+      <button type="submit">Apply Filters</button>
+    </form>
+  </div>
+  
+  <div class="statistics-table">
+    <h2>Statistics</h2>
+    <table *ngIf="stats.length > 0">
+      <thead>
+        <tr>
+          <th>Event Type</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stat of stats">
+          <td>{{ stat._id }}</td>
+          <td>{{ stat.count }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <div *ngIf="stats.length === 0">
+      <p>No statistics available based on the current filters.</p>
+    </div>
+  </div>
+  

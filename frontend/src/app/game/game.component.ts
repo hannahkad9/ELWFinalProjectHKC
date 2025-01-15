@@ -251,7 +251,7 @@ export class GameComponent implements OnInit {
   private logEvent(location: string, eventType: string): void {
     const sessionId = this.sessionService.getSessionId();
     this.http
-      .post('http://localhost:3000/api/statistics', {
+      .post('http://localhost:3000/api/auth/statistics', {
         sessionId,
         llocEvent: location,
         tipusEvent: eventType,

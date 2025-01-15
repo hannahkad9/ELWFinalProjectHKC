@@ -158,7 +158,7 @@ router.get('/statistics', async (req, res) => {
 });
 
 
-// Get recent events (10 most recent) with optional filters
+// Get recent events (10 most) with optional filters
 router.get('/statistics/recent', async (req, res) => {
   try {
     const { dataInici, dataFinal, llocEvent, tipusEvent } = req.query;

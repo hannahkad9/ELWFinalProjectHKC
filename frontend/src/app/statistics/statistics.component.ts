@@ -1,12 +1,15 @@
+import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-statistics',
   standalone: true,
-  imports: [],
   templateUrl: './statistics.component.html',
-  styleUrl: './statistics.component.css'
+  styleUrl: './statistics.component.css',
+  imports: [FormsModule, CommonModule],
+  
 })
 
 export class StatisticsComponent implements OnInit {
@@ -20,7 +23,7 @@ export class StatisticsComponent implements OnInit {
   }
 
   loadStats(): void {
-    this.http.get<any[]>('http://localhost:3000/api/statistics', { params: this.filters })
+    this.http.get<any[]>('http://localhost:3000/api/auth/statistics', { params: this.filters })
       .subscribe(data => this.stats = data);
   }
 }
